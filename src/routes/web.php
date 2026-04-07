@@ -1,0 +1,6 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+Route::get('/dashboard', fn() => view('dashboard'))
+    ->middleware('auth');
