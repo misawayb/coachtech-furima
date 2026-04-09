@@ -10,16 +10,40 @@
 
 @section('content')
 <h1 class="auth-title">会員登録</h1>
-<form class="auth-form" action="/register" method="post">
+<form class="auth-form" action="/register" method="post" novalidate>
     @csrf
-    <label class="form-label" for="name">ユーザー名</label>
-    <input class="form-input" id="name" name="name" type="text">
-    <label class="form-label" for="email">メールアドレス</label>
-    <input class="form-input" id="email" name="email" type="email">
-    <label class="form-label" for="password">パスワード</label>
-    <input class="form-input" id="password" name="password" type="password">
-    <label class="form-label" for="password_confirmation">確認用パスワード</label>
-    <input class="form-input" id="password_confirmation" name="password_confirmation" type="password">
+    <div class="auth-field">
+        <label class="form-label" for="name">ユーザー名</label>
+        <input class="form-input" id="name" name="name" type="text">
+        @error('name')
+        <p class="error-message">{{ $message }}</p>
+        @enderror
+    </div>
+    <div class="auth-field">
+        <label class="form-label" for="email">メールアドレス</label>
+        <input class="form-input" id="email" name="email" type="email">
+        @error('email')
+        <p class="error-message">{{ $message }}</p>
+        @enderror
+    </div>
+    <div class="auth-field">
+        <label class="form-label" for="password">パスワード</label>
+        <input class="form-input" id="password" name="password" type="password">
+        @error('password')
+        @if($message !== 'パスワードと一致しません')
+        <p class="error-message">{{ $message }}</p>
+        @endif
+        @enderror
+    </div>
+    <div class="auth-field">
+        <label class="form-label" for="password_confirmation">確認用パスワード</label>
+        <input class="form-input" id="password_confirmation" name="password_confirmation" type="password">
+        @error('password')
+        @if($message === 'パスワードと一致しません')
+        <p class="error-message">{{ $message }}</p>
+        @endif
+        @enderror
+    </div>
     <button class="auth-btn" type="submit">登録する</button>
 </form>
 <a class="auth-link" href="/login">ログインはこちら</a>
