@@ -13,7 +13,7 @@
     @csrf
     @method('patch')
     <div class="profile-field">
-        <img width="100" class="profile-image" src="{{ $user->profile_image ? asset( 'storage/' . $user->profile_image ) : asset( 'image/default-profile.png' ) }}" alt="プロフィール画像">
+        <img width="100" class="profile-image" src="{{ $user->profile_image ? asset( 'storage/' . $user->profile_image ) : asset( 'image/default-profile.png' ) }}" id="preview" alt="プロフィール画像">
         <label class="image-label" for="profile_image">画像を選択する</label>
         <input class="image-select" id="profile_image" name="profile_image" type="file">
     </div>
@@ -47,4 +47,18 @@
     </div>
     <button class="update-btn" type="submit">更新する</button>
 </form>
+
+<script>
+    document.getElementById('profile_image').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('preview').src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
+
 @endsection
