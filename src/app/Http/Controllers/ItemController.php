@@ -4,17 +4,44 @@ namespace App\Http\Controllers;
 
 use App\Enums\Condition;
 use App\Http\Requests\ExhibitionRequest;
+use App\Models\User;
 use App\Models\Item;
 use App\Models\Category;
 use App\Models\ItemCategory;
 
 class ItemController extends Controller
 {
+    public function index()
+    {
+        $tab = request()->query('tab');
+        $keyword = request()->query('keyword');
+
+        if ($tab === 'mylist') {
+            if (auth()->id() === null) {
+                $items = collect();
+            } else {
+                $items = auth()->user()->likedItems;
+            }
+        } else {
+            if (auth()->id() === null) {
+            $items = Item::all();
+            } else {
+            $items = Item::where('user_id', '!=', auth()->id())->get();
+            }
+        }
+        if($keyword){
+            $items = $items->filter(fn($item) => str_contains($item->name, $keyword));
+        }
+
+        return view('item.index', compact('items','keyword'));
+    }
+
+
     public function create()
     {
         $conditions = Condition::cases();
         $categories = Category::all();
-        return view('sell',compact('conditions','categories'));
+        return view('item.sell',compact('conditions','categories'));
     }
 
     public function store(ExhibitionRequest $request)

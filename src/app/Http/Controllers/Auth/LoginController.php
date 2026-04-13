@@ -21,6 +21,6 @@ class LoginController extends Controller
                 'email' => 'ログイン情報が登録されていません',
             ]);
         }
-        return redirect('/dashboard');
+        return redirect('/');
     }
 }

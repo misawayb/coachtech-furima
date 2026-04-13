@@ -16,8 +16,8 @@
         <p class="header-logo">
             <img src="" alt="COACHTECHロゴ">
         </p>
-        <form class="header-search" action="" method="get">
-            <input class="search-input" type="text" placeholder="なにをお探しですか？">
+        <form class="header-search" action="/" method="get">
+            <input class="search-input" name="keyword" type="text" placeholder="なにをお探しですか？">
         </form>
         <nav class="header-nav">
             @auth
