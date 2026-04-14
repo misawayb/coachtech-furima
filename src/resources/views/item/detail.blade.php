@@ -66,12 +66,17 @@
                 <p class="comment">{{ $comment->comment }}</p>
             </div>
             @endforeach
-            <form class="comment-form" action="" method="post">
+            @auth
+            <form class="comment-form" action="{{ route('comment.store', ['item_id' => $item->id])}}" method="post">
                 @csrf
                 <label class="for-item" for="comment-input">商品へのコメント</label>
-                <textarea class="comment-input" name="" id="comment-input"></textarea>
+                <textarea class="comment-input" name="comment" id="comment-input"></textarea>
                 <button class="comment-btn" type="submit">コメントを送信する</button>
+                @error('comment')
+                <p class="error-message">{{ $message }}</p>
+                @enderror
             </form>
+            @endauth
         </div>
     </div>
 </div>

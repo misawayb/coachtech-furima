@@ -26,7 +26,7 @@
                 <button class="nav-logout" type="submit">ログアウト</button>
             </form>
             @else
-            <a class="nav-login" href="">ログイン</a>
+            <a class="nav-login" href="/login">ログイン</a>
             @endauth
             <a class="nav-mypage" href="">マイページ</a>
             <a class="nav-sell" href="">出品</a>
