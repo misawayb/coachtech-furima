@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Item;
 use App\Models\Category;
 use App\Models\ItemCategory;
+use App\Models\Comment;
 
 class ItemController extends Controller
 {
@@ -61,5 +62,11 @@ class ItemController extends Controller
             ]);
         }
         return redirect('/');
+    }
+    public function show($item_id)
+    {
+        $item = Item::with(['likes', 'comments.user', 'categories'])->findOrFail($item_id);
+
+        return view('item.detail',compact('item'));
     }
 }
