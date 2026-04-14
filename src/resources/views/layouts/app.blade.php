@@ -21,7 +21,7 @@
         </form>
         <nav class="header-nav">
             @auth
-            <form class="logout" action="" method="post">
+            <form class="logout" action="/logout" method="post">
                 @csrf
                 <button class="nav-logout" type="submit">ログアウト</button>
             </form>

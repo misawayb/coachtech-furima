@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\Item;
 use App\Models\Category;
 use App\Models\ItemCategory;
-use App\Models\Comment;
+use App\Models\Like;
 
 class ItemController extends Controller
 {
@@ -67,6 +67,8 @@ class ItemController extends Controller
     {
         $item = Item::with(['likes', 'comments.user', 'categories'])->findOrFail($item_id);
 
-        return view('item.detail',compact('item'));
+        $isLiked = Like::where('item_id', $item_id)->where('user_id', auth()->id())->exists();
+
+        return view('item.detail',compact('item','isLiked'));
     }
 }

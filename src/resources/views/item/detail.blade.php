@@ -21,7 +21,21 @@
         </div>
         <div class="item-actions">
             <div class="likes-field">
+                @auth
+                <form class="like-form" action="{{ route('like.store', ['item_id' => $item->id]) }}" method="post">
+                    @csrf
+                    <button class="like-button" type="submit">
+                        @if($isLiked)
+                        <img class="likes-icon" src="{{ asset( 'image/likes-icon.png' ) }}" alt="いいね済みハート">
+                        @else
+                        <img class="likes-icon" src="{{ asset( 'image/likes-default-icon.png' ) }}" alt="デフォルトハート">
+                        @endif
+                    </button>
+                </form>
+                @endauth
+                @guest
                 <img class="likes-icon" src="{{ asset( 'image/likes-default-icon.png' ) }}" alt="デフォルトハート">
+                @endguest
                 <span class="likes-count">{{ $item->likes->count() }}</span>
             </div>
             <div class="comment-field">
