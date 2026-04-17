@@ -42,7 +42,7 @@
                 <img class="comment-icon" src="{{ asset('image/comment-icon.png') }}" alt="">
                 <span class="comments-count">{{ $item->comments->count() }}</span>
             </div>
-            <a class="購入手続きに行く-btn" href="">購入手続きへ</a>
+            <a class="購入手続きに行く-btn" href="{{ route('purchase.show',$item->id) }}">購入手続きへ</a>
             <h3 class="detail-title">商品説明</h3>
             <p class="detail-description">{{ $item->description }}</p>
             <h3 class="detail-title">商品の状態</h3>
