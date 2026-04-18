@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Enums\Condition;
 use App\Http\Requests\ExhibitionRequest;
-use App\Models\User;
 use App\Models\Item;
 use App\Models\Category;
 use App\Models\ItemCategory;
@@ -25,16 +24,19 @@ class ItemController extends Controller
             }
         } else {
             if (auth()->id() === null) {
-            $items = Item::all();
+                $items = Item::all();
             } else {
-            $items = Item::where('user_id', '!=', auth()->id())->get();
+                if ($keyword) {
+                    $items = Item::where('user_id', '!=', auth()->id())
+                        ->where('name', 'like', '%' . $keyword . '%')
+                        ->get();
+                } else {
+                    $items = Item::where('user_id', '!=', auth()->id())->get();
+                }
             }
         }
-        if($keyword){
-            $items = $items->filter(fn($item) => str_contains($item->name, $keyword));
-        }
 
-        return view('item.index', compact('items','keyword'));
+        return view('item.index', compact('items', 'keyword'));
     }
 
 
