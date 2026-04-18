@@ -11,8 +11,8 @@
 @section('content')
 <div class="items-page">
     <div class="tab-nav">
-        <a class="top-title" href="/">おすすめ</a>
-        <a class="top-title" href="/?tab=mylist{{ $keyword ? '&keyword=' . $keyword : '' }}">マイリスト</a>
+        <a class="nav-title" href="/">おすすめ</a>
+        <a class="nav-title" href="/?tab=mylist{{ $keyword ? '&keyword=' . $keyword : '' }}">マイリスト</a>
     </div>
     <div class="item-list">
         @foreach($items as $item)

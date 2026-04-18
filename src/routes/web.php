@@ -17,6 +17,7 @@ Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 Route::middleware('auth')->group(function(){
     Route::get('/mypage/profile', [UserController::class, 'index'])->name('user.index');
     Route::patch('/mypage/profile', [UserController::class, 'update'])->name('user.update');
+    Route::get('/mypage',[UserController::class,'show'])->name('mypage.show');
     Route::post('/item/{item_id}/like', [LikeController::class, 'store'])->name('like.store');
     Route::post('/item/{item_id}/comment',[CommentController::class,'store'])->name('comment.store');
     Route::get('/purchase/address/{item_id}', [AddressController::class, 'show'])->name('address.show');

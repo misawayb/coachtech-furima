@@ -26,4 +26,19 @@ class UserController extends Controller
 
         return redirect('mypage/profile');
     }
+
+    public function show()
+    {
+        $user = auth()->user();
+        $tab = request('page', 'sell');
+
+        if($tab==='buy')
+            {
+                $items = $user->purchases->pluck('item');
+            } else {
+                $items = $user->items;
+            }
+
+        return view('mypage.index',compact('user', 'items','tab'));
+    }
 }
