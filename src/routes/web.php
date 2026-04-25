@@ -26,13 +26,11 @@ Route::middleware('auth')->group(function(){
     Route::post('/purchase/{item_id}', [PurchaseController::class, 'store'])->name('purchase.store');
     Route::get('/purchase/success/{item_id}', [PurchaseController::class, 'success'])->name('purchase.success');
     Route::get('/purchase/cancel/{item_id}', [PurchaseController::class, 'cancel'])->name('purchase.cancel');
+    Route::get('/sell', [ItemController::class, 'create'])->name('item.create');
+    Route::post('/sell', [ItemController::class, 'store'])->name('item.store');
 });
 
 Route::get('/', [ItemController::class, 'index'])->name('item.index');
-
-
-Route::get('/sell',[ItemController::class,'create'])->name('item.create');
-Route::post('/sell', [ItemController::class, 'store'])->name('item.store');
 Route::get('/item/{item_id}',[ItemController::class,'show'])->name('item.show');
 
 
