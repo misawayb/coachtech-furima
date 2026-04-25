@@ -73,7 +73,7 @@ return [
     |
     */
 
-    'home' => '/',
+    'home' => '/mypage/profile',
 
     /*
     |--------------------------------------------------------------------------
@@ -145,7 +145,7 @@ return [
 
     'features' => [
         Features::registration(),
-        // Features::emailVerification(),
+        Features::emailVerification(),
     ],
 
 ];

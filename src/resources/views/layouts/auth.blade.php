@@ -14,7 +14,7 @@
 <body>
     <header class="header">
         <p class="header-logo">
-            <img src="" alt="COACHTECHロゴ">
+            <img src="{{ asset( 'image/coachtech_header_logo.png' )}}" href="/" alt="COACHTECHロゴ">
         </p>
     </header>
     <main class="main">

@@ -21,6 +21,9 @@ class LoginController extends Controller
                 'email' => 'ログイン情報が登録されていません',
             ]);
         }
+        if(!Auth::user()->hasVerifiedEmail()) {
+                return redirect('/email/verify');
+            }
         return redirect('/');
     }
 }
