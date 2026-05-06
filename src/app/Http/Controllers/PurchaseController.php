@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Enums\PaymentMethod;
 use App\Models\Purchase;
 use App\Models\Item;
@@ -25,8 +26,17 @@ class PurchaseController extends Controller
             ];
         }
         $payment_methods = PaymentMethod::cases();
+        $selected_payment = session('payment_method');
 
-        return view('purchase.detail',compact('user','item','address_delivery', 'payment_methods'));
+        return view('purchase.detail',compact('user','item','address_delivery', 'payment_methods', 'selected_payment'));
+    }
+
+    public function selectPayment(Request $request, $item_id)
+    {
+        $data = $request->only('payment_method');
+        session(['payment_method' => $data]);
+
+        return redirect(route('purchase.show', $item_id));
     }
 
     public function store(PurchaseRequest $request, $item_id)

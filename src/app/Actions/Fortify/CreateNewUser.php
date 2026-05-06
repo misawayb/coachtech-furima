@@ -12,7 +12,17 @@ class CreateNewUser implements CreatesNewUsers
 {
     public function create(array $input): User
     {
-        Validator::make($input, (new RegisterRequest())->rules(), (new RegisterRequest())->messages())->validate();
+        $validator = Validator::make(
+            $input,
+            (new RegisterRequest())->rules(),
+            (new RegisterRequest())->messages()
+        );
+
+        if ($validator->fails()) {
+            throw \Illuminate\Validation\ValidationException::withMessages(
+                $validator->errors()->toArray()
+            );
+        }
 
         return User::create([
             'name'      => $input['name'],
