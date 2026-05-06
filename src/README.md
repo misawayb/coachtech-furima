@@ -16,3 +16,7 @@ DB_PORT=3306
 DB_DATABASE=coachtech-furima_db
 DB_USERNAME=laravel_user
 DB_PASSWORD=laravel_pass
+
+
+.env.testing は .gitignore に追加してGitで管理しないようにして、READMEに「テスト実行前に .env.testing を作成して以下を設定してください」と書くのが正しい方法です。
+STRIPE_SECRET=sk_test_xxxxxxxxxx

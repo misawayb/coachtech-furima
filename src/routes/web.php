@@ -26,6 +26,7 @@ Route::middleware('auth')->group(function(){
             Route::post('/purchase/address/{item_id}', [AddressController::class, 'store'])->name('address.store');
             Route::get('/purchase/{item_id}',[PurchaseController::class,'show'])->name('purchase.show');
             Route::post('/purchase/{item_id}', [PurchaseController::class, 'store'])->name('purchase.store');
+            Route::post('/purchase/{item_id}/payment',[PurchaseController::class,'selectPayment'])->name('purchase.payment');
             Route::get('/purchase/success/{item_id}', [PurchaseController::class, 'success'])->name('purchase.success');
             Route::get('/purchase/cancel/{item_id}', [PurchaseController::class, 'cancel'])->name('purchase.cancel');
             Route::get('/sell', [ItemController::class, 'create'])->name('item.create');

@@ -21,7 +21,6 @@
         </div>
         <div class="item-actions">
             <div class="likes-field">
-                @auth
                 <form class="like-form" action="{{ route('like.store', ['item_id' => $item->id]) }}" method="post">
                     @csrf
                     <button class="like-button" type="submit">
@@ -32,7 +31,6 @@
                         @endif
                     </button>
                 </form>
-                @endauth
                 @guest
                 <img class="likes-icon" src="{{ asset( 'image/likes-default-icon.png' ) }}" alt="デフォルトハート">
                 @endguest
@@ -66,17 +64,16 @@
                 <p class="comment">{{ $comment->comment }}</p>
             </div>
             @endforeach
-            @auth
             <form class="comment-form" action="{{ route('comment.store', ['item_id' => $item->id])}}" method="post">
                 @csrf
                 <label class="for-item" for="comment-input">商品へのコメント</label>
                 <textarea class="comment-input" name="comment" id="comment-input"></textarea>
                 <button class="comment-btn" type="submit">コメントを送信する</button>
+                <span class="class">コメントはログイン後に送信できます</span>
                 @error('comment')
                 <p class="error-message">{{ $message }}</p>
                 @enderror
             </form>
-            @endauth
         </div>
     </div>
 </div>

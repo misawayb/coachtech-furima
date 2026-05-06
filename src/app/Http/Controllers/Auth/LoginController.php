@@ -24,6 +24,6 @@ class LoginController extends Controller
         if(!Auth::user()->hasVerifiedEmail()) {
                 return redirect('/email/verify');
             }
-        return redirect('/');
+        return redirect('/mypage/profile');
     }
 }
