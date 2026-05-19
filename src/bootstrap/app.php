@@ -12,11 +12,13 @@ return Application::configure(basePath: dirname(__DIR__))
     )
 
     ->withMiddleware(function (Middleware $middleware): void {
-        // テスト環境のみCSRFを無効にする方法が分からなかった
-        // Laravel11でのテスト環境限定の設定方法が未解決のため一時的に全環境で無効化中
-        $middleware->validateCsrfTokens(except: ['*']);
+        // 何も書かない（テスト時はLaravelが自動でCSRFを無効化する）
     })
 
     ->withExceptions(function (Exceptions $exceptions): void {
         //
     })->create();
+
+
+
+

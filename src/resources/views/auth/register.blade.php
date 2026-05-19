@@ -4,10 +4,6 @@
 会員登録
 @endsection
 
-@section('css')
-<link rel="stylesheet" href="{{ asset('css/auth.css') }}">
-@endsection
-
 @section('content')
 <h1 class="auth-title">会員登録</h1>
 <form class="auth-form" action="/register" method="post" novalidate>

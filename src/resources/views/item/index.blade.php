@@ -5,14 +5,16 @@
 @endsection
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/item-index.css') }}">
+<link rel="stylesheet" href="{{ asset('css/item.css') }}">
 @endsection
 
 @section('content')
 <div class="items-page">
-    <div class="tab-nav">
-        <a class="nav-title" href="/">おすすめ</a>
-        <a class="nav-title" href="/?tab=mylist{{ $keyword ? '&keyword=' . $keyword : '' }}">マイリスト</a>
+    <div class="tab-wrapper">
+        <div class="tab-nav">
+            <a class="nav-title" href="/">おすすめ</a>
+            <a class="nav-title" href="/?tab=mylist{{ $keyword ? '&keyword=' . $keyword : '' }}">マイリスト</a>
+        </div>
     </div>
     <div class="item-list">
         @foreach($items as $item)

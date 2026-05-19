@@ -5,7 +5,7 @@
 @endsection
 
 @section('css')
-<link rel="stylesheet" href="{{ ('css/purchase.address.css') }}">
+<link rel="stylesheet" href="{{ asset('css/purchase.css') }}">
 @endsection
 
 @section('content')
@@ -33,6 +33,6 @@
         <p class="error-message">{{ $message }}</p>
         @enderror
     </div>
-    <button class="address-btn" type="submit">更新する</button>
+    <button class="red-btn" type="submit">更新する</button>
 </form>
 @endsection

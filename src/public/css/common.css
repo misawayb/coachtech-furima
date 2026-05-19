@@ -1,4 +1,143 @@
-/* あとでmypage二移動 */
-.active {
+:root {
+    --color-red: #ff5555;
+    /* 赤ボタン・エラー */
+    --color-black: #000000;
+    /* 基本テキスト・ヘッダー */
+    --color-gray-dark: #5f5f5f;
+    /* タイトル・枠線 */
+    --color-gray-light: #d9d9d9;
+    /* 画像背景 */
+    --color-white: #ffffff;
+}
+
+input {
+    font-size: inherit;
+}
+
+p {
+    margin: 0;
+}
+
+/* ヘッダー */
+.header {
+    max-width: 100%;
+    padding: 20px;
+    height: 80px;
+    background-color: var(--color-black);
+    display: flex;
+    flex-direction: row;
+    font-size: 24px;
+    align-items: center;
+}
+
+.header-logo {
+    margin-right: 80px;
+    cursor: pointer;
+}
+
+.header-search {
+    flex: 1;
+}
+
+.search-input {
+    min-width: 350px;
+    width: 100%;
+    padding: 10px 50px;
+    border: none;
+    border-radius: 5px;
+}
+
+.header-nav {
+    margin-left: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logout,
+.nav-login,
+.nav-mypage,
+.nav-sell {
+    margin: 0 15px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav-logout,
+.nav-login,
+.nav-mypage {
+    min-width: 140px;
+    color: var(--color-white);
+}
+
+.nav-logout {
+    font-size: inherit;
+    background-color: transparent;
+}
+
+.nav-sell {
+    min-width: 100px;
+    padding: 0.3em 1.2em;
+    background-color: var(--color-white);
+    color: var(--color-black);
+    border-radius: 4px;
+}
+
+/* メイン */
+.main {
+    margin: 0;
+}
+
+/* タイトルh1 */
+.page-title {
+    margin-top: 2em;
+    text-align: center;
+}
+
+/* エラー */
+.error-message {
+    color: var(--color-red);
+}
+
+/* 共通ボタン */
+.red-btn {
+    min-width: 250px;
+    margin: 1em 0 0;
+    width: 100%;
+    height: 2em;
+    font-size: 26px;
+    font-weight: bold;
+    border: none;
+    background-color: var(--color-red);
+    color: var(--color-white);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* タブナビ */
+.tab-wrapper {
+    border-bottom: 2px solid var(--color-gray-light);
+}
+
+.tab-nav {
+    max-width: 1540px;
+    margin: 0 auto;
+    padding: 0 0 0.2em 100px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 40px;
+    text-decoration: none;
+}
+
+.nav-title {
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 24px;
+    color: var(--color-gray-dark);
+}
+
+.nav-title.active {
     color: red;
 }

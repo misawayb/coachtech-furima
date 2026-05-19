@@ -1,0 +1,131 @@
+/* 購入画面 */
+.purchase-page {
+    max-width: 1540px;
+    margin: 0 auto;
+    padding: 80px;
+    display: flex;
+    flex-direction: row;
+}
+
+.purchase-group {
+    width: 800px;
+}
+
+.detail-field {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--color-gray-dark);
+}
+
+.item-img {
+    width: 180px;
+    margin: 0 30px 30px 0;
+}
+
+.item-price {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-name,
+.price {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.price-symbol {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.purchase-field {
+    padding: 20px 20px 50px;
+    border-bottom: 1px solid var(--color-gray-dark);
+}
+
+.field-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.field-title__group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.select-payment_method {
+    display: block;
+    margin: 2em 3em 0;
+    padding: 0.2em 1em;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+.address-change {
+    color: #0073CC;
+    text-decoration: none;
+}
+
+.address-group {
+    margin: 1.5em 3em 0;
+    font-size: 20px;
+}
+
+.address-zip_code {
+    display: block;
+}
+
+.summary-field {
+    margin-left: 80px;
+    flex: 1;
+}
+
+.summary-items {
+    margin-bottom: 2em;
+}
+
+.summary-item {
+    min-width: 420px;
+    width: 100%;
+    height: 120px;
+    padding: 50px;
+    border: 1px solid var(--color-gray-dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.summary-item+.summary-item {
+    border-top: none;
+}
+
+.summary-title,
+.summary-price-symbol {
+    font-size: 20px;
+}
+
+.summary-content {
+    font-size: 24px;
+}
+
+/* 住所変更画面 */
+.address-form {
+    margin: 6em auto;
+    max-width: 700px;
+}
+
+.address-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3em;
+    font-size: 24px;
+}
+
+.address-label {
+    font-weight: bold;
+}
+
+.address-input {
+    padding: 0.2em 1em;
+}

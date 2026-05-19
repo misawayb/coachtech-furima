@@ -1,0 +1,109 @@
+/* 共通パーツ */
+.profile-field {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    max-width: 1020px;
+    align-items: center;
+    padding: 70px;
+}
+
+.profile-img {
+    flex-shrink: 0;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+/* プロフィール画面 */
+.mypage-page {
+    margin: 0 auto;
+}
+
+.profile-name {
+    flex: 1;
+    margin: 0 2em;
+    font-size: 36px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.edit-btn {
+    flex-shrink: 0;
+    padding: 0.5em 1em;
+    color: var(--color-red);
+    font-size: 20px;
+    font-weight: bold;
+    border: 2px solid var(--color-red);
+    border-radius: 10px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.item-list {
+    max-width: 1540px;
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    gap: 20px;
+}
+
+.item-field {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.item-name {
+    margin-top: 0.2em;
+    font-size: 24px;
+    color: var(--color-black);
+    text-decoration: none;
+}
+
+/* プロフィール編集画面 */
+.profile-form{
+    margin: 0 auto 5em;
+    max-width: 700px;
+}
+
+.image-label {
+    margin-left: 30px;
+    flex-shrink: 0;
+    padding: 0.5em 1em;
+    color: var(--color-red);
+    font-size: 20px;
+    font-weight: bold;
+    border: 2px solid var(--color-red);
+    border-radius: 10px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.image-select {
+    display: none;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+    font-size: 24px;
+}
+
+.profile-label {
+    margin-bottom: 0.2em;
+    font-weight: bold;
+}
+
+.profile-input {
+    padding: 0.5em 1em;
+}
+

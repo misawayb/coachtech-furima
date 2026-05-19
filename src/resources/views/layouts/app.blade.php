@@ -7,14 +7,15 @@
     <title>@yield('title') | COACHTECHフリマ</title>
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @yield('css')
 </head>
 
 <body>
     <header class="header">
         <p class="header-logo">
-            <img src="{{ asset( 'image/coachtech_header_logo.png' )}}" href="/" alt="COACHTECHロゴ">
+            <a href=" /">
+                <img src=" {{ asset( 'image/coachtech_header_logo.png' )}}" alt="COACHTECHロゴ">
+            </a>
         </p>
         <form class="header-search" action="/" method="get">
             <input class="search-input" name="keyword" type="text" placeholder="なにをお探しですか？" value="{{ $keyword ?? "" }}">

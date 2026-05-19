@@ -5,7 +5,7 @@
 @endsection
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/sell.css') }}">
+<link rel="stylesheet" href="{{ asset('css/item.css') }}">
 @endsection
 
 @section('content')
@@ -13,22 +13,26 @@
 <form class="sell-form" action="/sell" method="post" enctype="multipart/form-data" novalidate>
     @csrf
     <div class="sell-field">
-        <label class="image-label">商品画像</label>
-        <img class="sell-image" src="" id="preview" alt="商品画像">
-        <input class="image-select" id="sell_image" name="sell_image" type="file">
-        <label class="sell-select" for="sell_image">画像を選択する</label>
-        @error('sell_image')
+        <label class="sell-label">商品画像</label>
+        <div class="sell-image-field">
+            <img class="sell-preview" src="" id="preview" alt="">
+            <input class="image-select" id="item_image" name="sell_image" type="file">
+            <label class="sell-select" for="item_image">画像を選択する</label>
+        </div>
+        @error('item_image')
         <p class="error-message">{{ $message }}</p>
         @enderror
     </div>
     <div class="sell-detail">
-        <h2>商品の詳細</h2>
-        <div class="sell-field">
-            <label class="sell-label">カテゴリー</label>
-            @foreach( $categories as $category )
-            <input class="sell-input" id="category_{{ $category->id }}" name="category[]" value="{{ $category->id }}" @checked(in_array($category->id, old('category', []))) type="checkbox">
-            <label for="category_{{ $category->id }}">{{ $category->name }}</label>
-            @endforeach
+        <h2 class="sell-title">商品の詳細</h2>
+        <div class="category-block">
+            <div class="category-title">カテゴリー</div>
+            <div class="category-tags">
+                @foreach( $categories as $category )
+                <input class="category-input" id="category_{{ $category->id }}" name="category[]" value="{{ $category->id }}" @checked(in_array($category->id, old('category', []))) type="checkbox">
+                <label class="category-label" for="category_{{ $category->id }}">{{ $category->name }}</label>
+                @endforeach
+            </div>
             @error('category')
             <p class="error-message">{{ $message }}</p>
             @enderror
@@ -45,7 +49,7 @@
             <p class="error-message">{{ $message }}</p>
             @enderror
         </div>
-        <h2>商品名と説明</h2>
+        <h2 class="sell-title">商品名と説明</h2>
         <div class="sell-field">
             <label class="sell-label" for="name">商品名</label>
             <input class="sell-input" id="name" name="name" type="text" value="{{ old('name') }}">
@@ -59,7 +63,7 @@
         </div>
         <div class="sell-field">
             <label class="sell-label" for="description">商品の説明</label>
-            <textarea class="sell-input" id="description" name="description">{{ old('description') }}</textarea>
+            <textarea class="sell-input-textarea" id="description" name="description">{{ old('description') }}</textarea>
             @error('description')
             <p class="error-message">{{ $message }}</p>
             @enderror
@@ -68,23 +72,32 @@
             <label class="sell-label" for="price">販売価格</label>
             <div class="price-group">
                 <span class="price-symbol">¥</span>
-                <input class="sell-input" id="price" name="price" type="text" value="{{ old('price') }}">
+                <input class="sell-input-price" id="price" name="price" type="text" value="{{ old('price') }}">
             </div>
             @error('price')
             <p class="error-message">{{ $message }}</p>
             @enderror
         </div>
     </div>
-    <button class="sell-btn" type="submit">出品する</button>
+    <button class="red-btn" type="submit">出品する</button>
 </form>
 <script>
-    document.getElementById('sell_image').addEventListener('change', function(event) {
+    document.getElementById('item_image').addEventListener('change', function(event) {
         const file = event.target.files[0];
         if (file) {
             const reader = new FileReader();
+            const preview = document.getElementById('preview');
+            const label = document.querySelector('.sell-select');
+
             reader.onload = function(e) {
-                document.getElementById('preview').src = e.target.result;
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+                preview.style.width = '100%';
+                preview.style.height = '100%';
+                preview.style.objectFit = 'contain';
+                label.style.display = 'none';
             };
+
             reader.readAsDataURL(file);
         }
     });
