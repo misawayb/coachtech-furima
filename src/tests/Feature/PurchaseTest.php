@@ -27,15 +27,13 @@ class PurchaseTest extends TestCase
         ]);
         $item = Item::factory()->create();
 
+        $response = $this->get('/');
         $response = $this->get('/purchase/' . $item->id);
-        session(['purchase_data' => [
-            'user_id'        => $user->id,
-            'item_id'        => $item->id,
-            'zip_code'       => $user->zip_code,
-            'address'        => $user->address,
+        $response = $this->post('/purchase/' . $item->id, [
+            'zip_code' => $user->zip_code,
+            'address'  => $user->address,
             'payment_method' => PaymentMethod::CreditCard->value,
-        ]]);
-        $response = $this->get('/purchase/success/' . $item->id);
+        ]);
 
         $response->assertRedirect();
     }
