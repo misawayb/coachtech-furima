@@ -10,7 +10,7 @@ coachtechフリマは、ある企業が開発した独自のフリマアプリ<b
 
 - `git clone git@github.com:misawayb/coachtech-furima.git`
 - `docker-compose up -d --build`<br/>
-  Macで`no matching manifest for linux/arm64/v8 in the manifest list entries`のエラーが表示されてビルドできなかった場合 docker-compose.yml に以下を追記して再度`docker-compose up -d --build`する<br/>
+  Macで linux/arm64 のエラーが表示されてビルドできなかった場合 docker-compose.yml に以下を追記して再度`docker-compose up -d --build`する<br/>
   エラーが出てもビルドできている場合は無視してもOK
   ```
   mysql:
@@ -23,7 +23,7 @@ coachtechフリマは、ある企業が開発した独自のフリマアプリ<b
 1. `docker-compose exec php bash`
 2. `composer install`
 3. `cp .env.example .env`
-4. envに環境変数を追加
+4. envに環境変数が以下になっていることを確認
    ```
    DB_CONNECTION=mysql
    DB_HOST=mysql
@@ -32,18 +32,17 @@ coachtechフリマは、ある企業が開発した独自のフリマアプリ<b
    DB_USERNAME=laravel_user
    DB_PASSWORD=laravel_pass
    ```
-5. `touch .env.testing`
-6. Stripeのテストキーを env.testing に追加<br/>
+5. Stripeのテストキーを env.testing に追加<br/>
    `STRIPE_SECRET=sk_test_xxxxxxxx`<br/>
    StripeのテストキーはStripeダッシュボードのAPI
    keysから取得できる
-7. 画像アップロード対応<br/>
+6. 画像アップロード対応<br/>
    `php artisan storage:link`
-8. アプリケーションキー作成<br/>
+7. アプリケーションキー作成<br/>
    `php artisan key:generate`
 9. マイグレーション実行<br/>
    `php artisan migrate`
-10. シーディング実行<br/>
+9. シーディング実行<br/>
     `php artisan db:seed`
 
 ## 開発環境

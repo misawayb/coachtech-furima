@@ -17,6 +17,8 @@
 /public/build
 /public/hot
 /public/storage
+!/storage/app/public/seeds
+!/storage/app/public/seeds/items
 /storage/*.key
 /storage/pail
 /vendor
