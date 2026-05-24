@@ -42,6 +42,7 @@
         <form class="purchase-form" action="{{ route('purchase.store', $item->id )}}" method="post">
             @csrf
             <div class="purchase-field">
+                <input type="hidden" name="payment_method" value="{{ $selected_payment['payment_method'] ?? '' }}">
                 <div class="field-title__group">
                     <span class="field-title">配送先</span>
                     <a class="address-change" href="{{ route('address.show',$item->id) }}">変更する</a>
