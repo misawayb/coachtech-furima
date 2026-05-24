@@ -23,7 +23,7 @@ coachtechフリマは、ある企業が開発した独自のフリマアプリ<b
 1. `docker-compose exec php bash`
 2. `composer install`
 3. `cp .env.example .env`
-4. envに環境変数が以下になっていることを確認
+4. envの環境変数が以下になっていることを確認
    ```
    DB_CONNECTION=mysql
    DB_HOST=mysql
@@ -31,6 +31,9 @@ coachtechフリマは、ある企業が開発した独自のフリマアプリ<b
    DB_DATABASE=coachtech-furima_db
    DB_USERNAME=laravel_user
    DB_PASSWORD=laravel_pass
+   MAIL_MAILER=smtp
+   MAIL_HOST=mailhog
+   MAIL_PORT=1025
    ```
 5. Stripeのテストキーを env.testing に追加<br/>
    `STRIPE_SECRET=sk_test_xxxxxxxx`<br/>
