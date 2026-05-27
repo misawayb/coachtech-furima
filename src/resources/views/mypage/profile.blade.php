@@ -9,6 +9,16 @@
 @endsection
 
 @section('content')
+@if(session('message'))
+<div class="session-message" id="session-message">
+    {{ session('message') }}
+</div>
+<script>
+    document.getElementById('session-message').addEventListener('click', function() {
+        this.remove();
+    });
+</script>
+@endif
 <h1 class="page-title">プロフィール設定</h1>
 <form class="profile-form" action="/mypage/profile" method="post" enctype="multipart/form-data" novalidate>
     @csrf

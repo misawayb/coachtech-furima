@@ -10,14 +10,14 @@
     @csrf
     <div class="auth-field">
         <label class="form-label" for="name">ユーザー名</label>
-        <input class="form-input" id="name" name="name" type="text">
+        <input class="form-input" id="name" name="name" type="text" value="{{ old('name') }}">
         @error('name')
         <p class="error-message">{{ $message }}</p>
         @enderror
     </div>
     <div class="auth-field">
         <label class="form-label" for="email">メールアドレス</label>
-        <input class="form-input" id="email" name="email" type="email">
+        <input class="form-input" id="email" name="email" type="email" value="{{ old('email') }}">
         @error('email')
         <p class="error-message">{{ $message }}</p>
         @enderror

@@ -24,7 +24,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect('mypage/profile');
+        return redirect('mypage/profile')->with('message', 'プロフィールを更新しました');
     }
 
     public function show()

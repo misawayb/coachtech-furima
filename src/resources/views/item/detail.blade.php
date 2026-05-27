@@ -56,7 +56,7 @@
         </div>
         @auth
         @if( auth()->id() !== $item->user_id )
-        <button class="red-btn"><a class="red-btn" href="{{ route('purchase.show',$item->id) }}">購入手続きへ</a></button>
+        <a class="red-btn" href="{{ route('purchase.show',$item->id) }}">購入手続きへ</a>
         @endif
         @endauth
         <h3 class="detail-title">商品説明</h3>

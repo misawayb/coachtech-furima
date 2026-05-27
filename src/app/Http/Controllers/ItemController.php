@@ -17,10 +17,16 @@ class ItemController extends Controller
         $keyword = request()->query('keyword');
 
         if ($tab === 'mylist') {
-            if (auth()->id() === null) {
-                $items = collect();
-            } else {
-                $items = auth()->user()->likedItems;
+
+                if (auth()->id() === null) {
+                    $items = collect();
+                } else {
+                    $items = auth()->user()->likedItems;
+                    if ($keyword) {
+                        $items = $items->filter(function($item) use($keyword){
+                            return str_contains($item->name, $keyword);
+                    });
+                }
             }
         } else {
             if (auth()->id() === null) {
@@ -63,8 +69,9 @@ class ItemController extends Controller
                 'category_id' => $category_id,
             ]);
         }
-        return redirect('/');
+        return redirect('/')->with('message','出品完了！マイページから確認できます。');
     }
+
     public function show($item_id)
     {
         $item = Item::with(['likes', 'comments.user', 'categories'])->findOrFail($item_id);

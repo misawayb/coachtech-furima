@@ -128,6 +128,12 @@
     background-color: transparent;
 }
 
+a.red-btn {
+    display: block;
+    line-height: 2em;
+    text-align: center;
+}
+
 .detail-title {
     font-size: 36px;
     margin-bottom: 0.5em;

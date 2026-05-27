@@ -14,16 +14,16 @@
     @csrf
     <div class="auth-field">
         <label class="form-label" for="email">メールアドレス</label>
-        <input class="form-input" id="email" name="email" type="email">
+        <input class="form-input" id="email" name="email" type="email" value="{{ old('email') }}">
         @error('email')
-            <p class="error-message">{{ $message }}</p>
+        <p class="error-message">{{ $message }}</p>
         @enderror
     </div>
     <div class="auth-field">
         <label class="form-label" for="password">パスワード</label>
         <input class="form-input" id="password" name="password" type="password">
         @error('password')
-            <p class="error-message">{{ $message }}</p>
+        <p class="error-message">{{ $message }}</p>
         @enderror
     </div>
     <button class="auth-btn" type="submit">ログインする</button>

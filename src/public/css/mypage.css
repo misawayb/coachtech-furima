@@ -88,6 +88,20 @@
 }
 
 /* プロフィール編集画面 */
+.session-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-white);
+    border: 3px solid var(--color-red);
+    padding: 24px 32px;
+    border-radius: 10px;
+    z-index: 100;
+    font-size: 20px;
+    text-align: center;
+}
+
 .profile-form{
     margin: 0 auto 5em;
     max-width: 700px;
