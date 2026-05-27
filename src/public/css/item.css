@@ -3,6 +3,19 @@
     margin: 0 auto;
 }
 
+.session-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-white);
+    border: 3px solid var(--color-red);
+    padding: 24px 32px;
+    border-radius: 10px;
+    z-index: 100;
+    text-align: center;
+}
+
 .item-list {
     max-width: 1540px;
     margin: 50px auto;
@@ -18,8 +31,14 @@
     flex-direction: column;
 }
 
+.item-link {
+    text-decoration: none;
+}
+
 .item-image {
     width: 100%;
+    min-width: 150px;
+    max-width: 400px;
     aspect-ratio: 1 / 1;
     object-fit: cover;
 }
@@ -28,7 +47,6 @@
     margin-top: 0.2em;
     font-size: 24px;
     color: var(--color-black);
-    text-decoration: none;
 }
 
 /* 商品詳細画面 */

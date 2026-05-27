@@ -52,6 +52,11 @@ class PurchaseController extends Controller
 
         Stripe::setApiKey(config('services.stripe.secret'));
 
+        if ($data['payment_method'] === 'コンビニ支払い') {
+            Purchase::create($data);
+            return redirect()->route('item.index')->with('message', '購入が完了しました。コンビニでのお支払いについて、ご登録のメールアドレスに後日ご案内をお送りします');
+
+        } else{
         $stripeSession = StripeSession::create([
             'payment_method_types' => ['card'],
             'line_items' => [[
@@ -70,6 +75,7 @@ class PurchaseController extends Controller
         ]);
 
         return redirect($stripeSession->url);
+        }
     }
 
     public function success($item_id)

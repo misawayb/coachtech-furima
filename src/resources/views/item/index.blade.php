@@ -10,6 +10,16 @@
 
 @section('content')
 <div class="items-page">
+    @if(session('message'))
+    <div class="session-message">
+        {{ session('message') }}
+    </div>
+    <script>
+        document.getElementById('session-message').addEventListener('click', function() {
+            this.remove();
+        });
+    </script>
+    @endif
     <div class="tab-wrapper">
         <div class="tab-nav">
             <a class="nav-title" href="/">おすすめ</a>
@@ -24,8 +34,10 @@
                 <span class="sold-badge">Sold</span>
             </div>
             @endif
-            <img class="item-image @if($item->purchase !== null) item-image--sold @endif" src="{{ asset('storage/' . $item->image) }}" alt="商品画像">
-            <a class="item-name" href="{{ route('item.show', $item->id) }}">{{ $item->name }}</a>
+            <a class="item-link" href="{{ route('item.show', $item->id) }}">
+                <img class="item-image @if($item->purchase !== null) item-image--sold @endif" src="{{ asset('storage/' . $item->image) }}" alt="商品画像">
+                <span class="item-name">{{ $item->name }}</span>
+            </a>
         </div>
         @endforeach
     </div>

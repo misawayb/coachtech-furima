@@ -35,10 +35,18 @@ coachtechフリマは、ある企業が開発した独自のフリマアプリ<b
    MAIL_HOST=mailhog
    MAIL_PORT=1025
    ```
-5. Stripeのテストキーを env.testing に追加<br/>
-   `STRIPE_SECRET=sk_test_xxxxxxxx`<br/>
-   StripeのテストキーはStripeダッシュボードのAPI
-   keysから取得できる
+5. StripeのAPIキーを .env と .env.testing に追加<br/>
+   ```
+   .env
+      STRIPE_KEY=pk_test_xxxxxxxx
+      STRIPE_SECRET=sk_test_xxxxxxxx
+   ```
+   まず`touch .env.testing`で作成してから
+   ```
+   .env.testing
+      STRIPE_SECRET=sk_test_xxxxxxxx
+   ```
+      StripeのAPIキーはStripeダッシュボードのAPIkeysから取得できる
 6. 画像アップロード対応<br/>
    `php artisan storage:link`
 7. アプリケーションキー作成<br/>
