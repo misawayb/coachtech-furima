@@ -5,7 +5,7 @@
     flex-direction: row;
     max-width: 1020px;
     align-items: center;
-    padding: 70px;
+    padding: 70px 70px 20px;
 }
 
 .profile-img {
@@ -13,6 +13,7 @@
     width: 150px;
     height: 150px;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 /* プロフィール画面 */
@@ -55,10 +56,28 @@
     flex-direction: column;
 }
 
+.item-link {
+    text-decoration: none;
+}
+
 .item-image {
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
+}
+
+.item-image__sold {
+    position: relative;
+}
+
+.sold-badge {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-gray-dark);
+    font-size: 24px;
+    color: var(--color-white);
+    padding: 4px 12px;
 }
 
 .item-name {

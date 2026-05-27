@@ -117,6 +117,7 @@ p {
 
 /* タブナビ */
 .tab-wrapper {
+    margin-top: 50px;
     border-bottom: 2px solid var(--color-gray-light);
 }
 

@@ -36,7 +36,7 @@ class ItemController extends Controller
             }
         }
 
-        return view('item.index', compact('items', 'keyword'));
+        return view('item.index', compact('items', 'keyword','tab'));
     }
 
 

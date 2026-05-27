@@ -13,6 +13,7 @@
     padding: 24px 32px;
     border-radius: 10px;
     z-index: 100;
+    font-size: 20px;
     text-align: center;
 }
 
@@ -33,6 +34,18 @@
 
 .item-link {
     text-decoration: none;
+}
+.item-image__sold {
+    position: relative;
+}
+.sold-badge {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-gray-dark);
+    font-size: 24px;
+    color: var(--color-white);
+    padding: 4px 12px;
 }
 
 .item-image {
@@ -61,6 +74,7 @@
     padding: 30px;
     overflow: hidden;
 }
+
 
 .detail-image {
     width: 100%;

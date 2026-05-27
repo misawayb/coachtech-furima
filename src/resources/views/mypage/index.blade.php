@@ -24,8 +24,20 @@
     <div class="item-list">
         @foreach( $items as $item )
         <div class="item-field">
-            <img class="item-image" src="{{ asset('storage/' . $item->image) }}" alt="商品画像">
-            <a class="item-name" href="">{{ $item->name }}</a>
+            @if($tab === 'sell')
+            <a class="item-link" href="{{ route('item.show', $item->id) }}">
+                <img class="item-image" src="{{ asset('storage/' . $item->image) }}" alt="出品した商品の画像">
+                <span class="item-name">{{ $item->name }}</span>
+            </a>
+            @else
+            <div class="item-link">
+                <div class="item-image__sold">
+                    <span class="sold-badge">Sold</span>
+                    <img class="item-image" src="{{ asset('storage/' . $item->image) }}" alt="購入した商品の画像">
+                </div>
+                <span class="item-name">{{ $item->name }}</span>
+            </div>
+            @endif
         </div>
         @endforeach
     </div>

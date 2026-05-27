@@ -23,21 +23,25 @@
         </div>
         <div class="item-actions">
             <div class="likes-field">
-                @auth
-                <form class="like-form" action="{{ route('like.store', ['item_id' => $item->id]) }}" method="post">
-                    @csrf
-                    <button class="like-button" type="submit">
-                        @if($isLiked)
-                        <img class="likes-icon" src="{{ asset( 'image/likes-icon.png' ) }}" alt="いいね済みハート">
-                        @else
-                        <img class="likes-icon" src="{{ asset( 'image/likes-default-icon.png' ) }}" alt="デフォルトハート">
-                        @endif
-                    </button>
-                </form>
-                @endauth
-                @guest
-                <img class="likes-icon" src="{{ asset( 'image/likes-default-icon.png' ) }}" alt="デフォルトハート">
-                @endguest
+                @if(auth()->check() && auth()->id() === $item->user_id)
+                    <img class="likes-icon" src="{{ asset('image/likes-default-icon.png') }}" alt="デフォルトハート">
+                @else
+                    @auth
+                    <form class="like-form" action="{{ route('like.store', ['item_id' => $item->id]) }}" method="post">
+                        @csrf
+                        <button class="like-button" type="submit">
+                            @if($isLiked)
+                            <img class="likes-icon" src="{{ asset( 'image/likes-icon.png' ) }}" alt="いいね済みハート">
+                            @else
+                            <img class="likes-icon" src="{{ asset( 'image/likes-default-icon.png' ) }}" alt="デフォルトハート">
+                            @endif
+                        </button>
+                    </form>
+                    @endauth
+                    @guest
+                    <img class="likes-icon" src="{{ asset( 'image/likes-default-icon.png' ) }}" alt="デフォルトハート">
+                    @endguest
+                @endif
                 <span class="likes-count">{{ $item->likes->count() }}</span>
             </div>
             <div class="comment-field">
@@ -50,7 +54,11 @@
                 ログイン後に送信できます</p>
             @endguest
         </div>
+        @auth
+        @if( auth()->id() !== $item->user_id )
         <button class="red-btn"><a class="red-btn" href="{{ route('purchase.show',$item->id) }}">購入手続きへ</a></button>
+        @endif
+        @endauth
         <h3 class="detail-title">商品説明</h3>
         <p class="detail-description">{{ $item->description }}</p>
         <h3 class="detail-title">商品の情報</h3>
